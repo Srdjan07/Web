@@ -1,0 +1,35 @@
+[
+    {
+        "title": "PC Components",
+        "subitems": [
+            {
+                "title": "CPU",
+                "link": "/CPU"
+            },
+            {
+                "title": "Graphic Card",
+                "link": "/gpu"
+            },
+            {
+                "title": "ram",
+                "link": "/ram"
+            },
+            {
+                "title": "Storage",
+                "link": "/storage"
+            }
+        ]
+    },
+    {
+        "title": "Tablets",
+        "subitems": []
+    },
+    {
+        "title": "Laptops",
+        "subitems": []
+    },
+    {
+        "title": "About us",
+        "subitems": []
+    }
+]
