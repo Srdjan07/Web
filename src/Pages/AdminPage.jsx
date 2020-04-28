@@ -31,6 +31,7 @@ export default class Admins extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            doFetch: true,
             cpuSwitch: false,
             gpuSwitch: false,
             ramSwitch: false,
@@ -38,6 +39,10 @@ export default class Admins extends React.Component {
             sliderValueMin: 0,
             sliderValueMax: 0,
             textValueFromSearch: "",
+            cpuSorted: "",
+            gpuSorted: "",
+            ramSorted: "",
+            storageSorted: "",
         }
     }
 
@@ -58,9 +63,12 @@ export default class Admins extends React.Component {
         this.setState({ textValueFromSearch: text })
 
     }
-
     // UNSAFE_componentWillMount() {
+    // if(doFetch) {
     //     this.AdminPageFetch();
+    //     this.setState({ doFetch: false });
+    // }
+    //    
     // }
     AdminPageFetch = () => {
         axios.get(`http://localhost:9000/adminproductlist?
@@ -69,7 +77,11 @@ export default class Admins extends React.Component {
                                     &ramCheckbox=${this.state.ramSwitch}
                                     &storageCheckbox=${this.state.storageSwitch}
                                     &SValueMin=${this.state.sliderValueMin}
-                                    &SValueMax=${this.state.sliderValueMax}`, {
+                                    &SValueMax=${this.state.sliderValueMax}
+                                    &cpuSorted=${this.state.cpuSorted}
+                                    &gpuSorted=${this.state.gpuSorted}
+                                    &ramSorted=${this.state.ramSorted}
+                                    &storageSorted=${this.state.storageSorted}`, {
             headers: { 'Access-Control-Allow-Origin': '*' }
         })
             .then(response => this.setState({ cpu: response.data }))
@@ -81,7 +93,7 @@ export default class Admins extends React.Component {
 
 
     render() {
-        console.log(this.state.textValueFromSearch)
+        console.log(this.state)
         return <Wrapper style={Background}>
             <NavTab />
             <Container>
@@ -97,6 +109,10 @@ export default class Admins extends React.Component {
                     onChangeFavorite={this.onChangeFavorite}
                     priceRange={this.priceRange}
                     changedValueSlider={this.sliderValueOnChange}
+                    cpuSorted={(sort) => { this.setState({ cpuSorted: sort }); }}
+                    gpuSorted={(sort) => { this.setState({ gpuSorted: sort }); }}
+                    ramSorted={(sort) => { this.setState({ ramSorted: sort }); }}
+                    storageSorted={(sort) => { this.setState({ storageSorted: sort }); }}
                 />
                 <FrontContainer>
                     <TopMainPageBanner />

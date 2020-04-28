@@ -24,6 +24,7 @@ const FilterDivLabel = styled.label`
     width: 100%;
     height: 30px;
     user-select: none;
+    cursor: pointer;
 `;
 
 export default class FilterMenu extends React.Component {
