@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchInputBar from '../AdminComponents/SearchInputComponent';
+import ListingComponent from '../Products/productsList';
 
 const RightPosition = styled.div`
     width: 300px;
@@ -17,8 +18,8 @@ export default class RightSide extends React.Component {
         console.log("props")
         console.log(this.props)
         return <RightPosition >
-
             <SearchInputBar changeSearchText={this.props.searchValueFetch}></SearchInputBar>
+            <ListingComponent />
         </RightPosition>
     }
 }

@@ -64,24 +64,21 @@ export default class Admins extends React.Component {
 
     }
     // UNSAFE_componentWillMount() {
-    // if(doFetch) {
     //     this.AdminPageFetch();
-    //     this.setState({ doFetch: false });
-    // }
-    //    
     // }
     AdminPageFetch = () => {
-        axios.get(`http://localhost:9000/adminproductlist?
-                                    cpuCheckbox=${this.state.cpuSwitch}
-                                    &gpuCheckbox=${this.state.gpuSwitch}
-                                    &ramCheckbox=${this.state.ramSwitch}
-                                    &storageCheckbox=${this.state.storageSwitch}
+        axios.get(`http://localhost:9000/filterlist?
+                                cpuSwitch=${this.state.cpuSwitch}
+                                    &gpuSwitch=${this.state.gpuSwitch}
+                                    &ramSwitch=${this.state.ramSwitch}
+                                    &storageSwitch=${this.state.storageSwitch}
                                     &SValueMin=${this.state.sliderValueMin}
                                     &SValueMax=${this.state.sliderValueMax}
                                     &cpuSorted=${this.state.cpuSorted}
                                     &gpuSorted=${this.state.gpuSorted}
                                     &ramSorted=${this.state.ramSorted}
-                                    &storageSorted=${this.state.storageSorted}`, {
+                                    &storageSorted=${this.state.storageSorted}
+                                    &search=${this.state.textValueFromSearch}`, {
             headers: { 'Access-Control-Allow-Origin': '*' }
         })
             .then(response => this.setState({ cpu: response.data }))
